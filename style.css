@@ -1,5 +1,9 @@
+html{
+  font-family: 'Nunito', sans-serif;
+
+}
+
 body {
-  font-family: Arial, sans-serif;
   max-width: 400px;
   margin: 40px auto;
   padding: 20px;

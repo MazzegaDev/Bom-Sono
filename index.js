@@ -35,13 +35,13 @@
         let msg = '';
 
         if(sleepTime < sleepGoal){
-            msg = `Com uma meta de sono de ${sleepGoal} - Você vai dormir ${sleepTime} horas. Abaixo da meta!`;
+            msg = `Com uma meta de sono de ${sleepGoal} Horas - Você vai dormir ${sleepTime} horas. Essa não e uma meta ideal! ❌`;
         }
         else if(sleepTime === sleepGoal){
-            msg = `Com uma meta de sono de ${sleepGoal} - Você vai dormir ${sleepTime} horas. Meta atingida!`;
+            msg = `Com uma meta de sono de ${sleepGoal} horas - Você vai dormir ${sleepTime} horas. Esses horarios atigem perfeitamente sua meta! ✅`;
         }
         else{
-            msg = `Com uma meta de sono de ${sleepGoal} - Você vai dormir ${sleepTime} horas. Acima da meta!`;
+            msg = `Com uma meta de sono de ${sleepGoal} horas - Você vai dormir ${sleepTime} horas. Você vai dormir mais que sua meta com esses horarios! 😴✅`;
         }
         li.textContent = msg;
         list.appendChild(li);
