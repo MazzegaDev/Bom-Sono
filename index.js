@@ -50,6 +50,7 @@
        
         li.addEventListener('click', () => {
             list.removeChild(li);
+            renderHistory();
         })
     }
 
