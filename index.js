@@ -1,4 +1,5 @@
-
+    let history = JSON.parse(localStorage.getItem('goalHistory')) || [];
+    window.addEventListener('DOMContentLoaded', ()=> renderHistory());
     function calc(){
         let sleepHrs = document.getElementById('horaDormir').value;
         let wakeUpHrs = document.getElementById('horaAcordar').value;
@@ -34,21 +35,58 @@
         let msg = '';
 
         if(sleepTime < sleepGoal){
-            msg = `Sua meta: ${sleepGoal} - Horas de sono: ${sleepTime}: Esse horario não atinge sua meta!`;
+            msg = `Com uma meta de sono de ${sleepGoal} - Você vai dormir ${sleepTime} horas. Abaixo da meta!`;
         }
         else if(sleepTime === sleepGoal){
-            msg = `Sua meta: ${sleepGoal} - Horas de sono: ${sleepTime}: Esse horario atinge sua meta!`;
+            msg = `Com uma meta de sono de ${sleepGoal} - Você vai dormir ${sleepTime} horas. Meta atingida!`;
         }
         else{
-            msg = `Sua meta: ${sleepGoal} - Horas de sono: ${sleepTime}: Esse horario esta acima da sua meta!`;
+            msg = `Com uma meta de sono de ${sleepGoal} - Você vai dormir ${sleepTime} horas. Acima da meta!`;
         }
         li.textContent = msg;
         list.appendChild(li);
-
+        
+        saveLocal(msg);
+       
         li.addEventListener('click', () => {
             list.removeChild(li);
         })
     }
+
+    function saveLocal(msg){
+        let [firstString, lastString] = msg.split('-');
+        let key = 'goalHistory';
+        let obj = {id: Date.now(),firstMsg: firstString, lastMsg: lastString};
+        history.push(obj);
+        let toJSON = JSON.stringify(history);
+        localStorage.setItem(key, toJSON);
+        
+    
+    }
+
+    function renderHistory(){
+        let jsonIten = JSON.parse(localStorage.getItem('goalHistory'));
+        let itens = jsonIten;
+        history = JSON.parse(localStorage.getItem('goalHistory')) || [];
+        let list = document.getElementById('listaMetas');
+
+        list.innerHTML = '';
+        itens.forEach(element => {
+            let li = document.createElement('li');
+            li.setAttribute('data-id',element.id);
+            let msg = `${element.firstMsg} - ${element.lastMsg}`;
+            li.textContent = msg;
+            list.appendChild(li);
+
+            li.addEventListener('click', ()=>{
+                let id = li.getAttribute('data-id');
+                history = history.filter(item => item.id != id);
+                localStorage.setItem('goalHistory', JSON.stringify(history));
+                list.removeChild(li);
+            })
+        });
+    }
+
 
     function calcSleep(sleepHrs,wakeUpHrs){
         let [sleepH, sleepMin] = sleepHrs.split(':').map(Number);
@@ -73,5 +111,6 @@
         return TotalHoursSleep;
     }
 
+    
     
 
