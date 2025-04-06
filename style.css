@@ -1,6 +1,6 @@
-html{
+html {
   font-family: 'Nunito', sans-serif;
-
+  font-size: 16px;
 }
 
 body {
@@ -15,11 +15,13 @@ body {
 
 h2 {
   text-align: center;
+  font-size: 1.5rem;
 }
 
 label {
   display: block;
   margin-top: 15px;
+  font-size: 1rem;
 }
 
 input {
@@ -29,6 +31,7 @@ input {
   border-radius: 8px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+  font-size: 1rem;
 }
 
 button {
@@ -39,7 +42,7 @@ button {
   color: white;
   border: none;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -54,6 +57,7 @@ button:hover {
   background: white;
   border-radius: 8px;
   text-align: center;
+  font-size: 1rem;
 }
 
 #listaMetas {
@@ -68,7 +72,7 @@ button:hover {
   padding: 10px;
   margin-bottom: 8px;
   border-radius: 4px;
-  font-size: 15px;
+  font-size: 0.95rem;
   word-wrap: break-word;
 }
 
@@ -85,8 +89,12 @@ button:hover {
   border-left-color: #f44336;
 }
 
-/* Responsividade */
+/* Responsividade para telas menores */
 @media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
   body {
     margin: 20px 10px;
     padding: 15px;
@@ -95,15 +103,8 @@ button:hover {
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   input, button {
-    font-size: 14px;
-  }
-
-  #listaMetas li {
-    font-size: 14px;
-    padding: 8px;
-  }
-}
+    font-size: 0.95rem;
